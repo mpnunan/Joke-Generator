@@ -13,11 +13,14 @@ const jokeParts = (obj) => {
 const jokeOnDom = () => {
   jokeRequest()
     .then((data) => {
+      console.warn(data.setup);
       jokeParts(data);
-    });
-  document.querySelector('#jokeTxt').innerHTML = `
+    })
+    .then(() => {
+      document.querySelector('#jokeTxt').innerHTML = `
   <div id="jokeBody">${joke.setup}</div>
   `;
+    });
 };
 
 const punchlineOnDom = () => {
